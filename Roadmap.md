@@ -24,7 +24,7 @@ Use a stage-driven rather than date-driven roadmap. Advance only after the owner
 - [ ] Normalize taxonomy, reconcile aliases and duplicates, separate cultural labels from musical structures and compilations.
 - [ ] Define reproducible EI/FI/PI scoring rubrics, listening conditions and reference anchors.
 - [ ] Add score provenance, rationale and confidence; retain null for unknowns.
-- [ ] Establish automated data validation, embedded snapshot consistency checks, JavaScript checks and browser regression tests.
+- [x] Establish automated data validation, embedded snapshot consistency checks, JavaScript checks and browser regression tests.
 
 **Exit criteria:** Stable data model, tested core interactions, initial taxonomy and scoring methodology accepted by the owner. No promotion solely on build count.
 

@@ -2,6 +2,36 @@
 
 Open index.html in a browser. Offline, no dependencies. genres.json is the editable source dataset; the HTML embeds a snapshot. Export edited values from the UI as JSON. Browser local storage may be unavailable on some file viewers.
 
+## Optional development checks
+
+The app opens directly from `index.html`. The development checks require Python 3,
+Node.js 20 or later, and npm. From the repository root, install the locked test
+dependency and its headless Chromium browser:
+
+```sh
+npm --prefix tests ci
+PLAYWRIGHT_BROWSERS_PATH=0 tests/node_modules/.bin/playwright install chromium --only-shell
+```
+
+Run all checks from the repository root. The command exits nonzero if any check
+fails; `--skip-browser` reports the browser suite as skipped, not passed:
+
+```sh
+python3 tests/run_all.py
+```
+
+Or run each check individually:
+
+```sh
+python3 validate_data.py
+python3 tests/check_inline_js.py
+PLAYWRIGHT_BROWSERS_PATH=0 node --test tests/browser.test.mjs
+```
+
+The browser suite opens the local HTML file in a headless browser with an
+isolated, offline context for each test. The install commands need internet
+access. Normal app use and checks after installation work offline.
+
 ## Model
 - EI: perceived musical drive and intensity, 0–100.
 - FI: attentional salience, 0–100, from utility/background to unignorable under comparable listening conditions.
