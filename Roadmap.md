@@ -22,22 +22,25 @@ Use a stage-driven rather than date-driven roadmap. Advance only after the owner
 - [x] 640-record seed database.
 - [x] Agent development governance (AGENTS.md and CLAUDE.md).
 - [ ] Normalize taxonomy, reconcile aliases and duplicates, separate cultural labels from musical structures and compilations.
-- [ ] Define reproducible EI/FI/PI scoring rubrics, listening conditions and reference anchors.
+- [ ] Define reproducible EI/FI/PI scoring rubrics and standard listening conditions (playback level, setting, listener familiarity). Write them in plain, perception-based language that a listener without music-theory training can apply. Anchor FI to concrete listening tasks, such as whether reading or conversation remains comfortable while the music plays.
+- [ ] Select reference anchor tracks for each index at fixed points (at least 10, 50 and 90), identified by title, artist and MusicBrainz recording ID. Store metadata only, no audio.
+- [ ] Build a calibration set of 20–30 genres spanning the families and the full EI/FI/PI range. The owner, currently the only rater, scores each by listening under the standard conditions, comparing close cases against the anchors or against each other side by side. After an interval of at least two weeks, the owner scores the set again without viewing the first scores. Record both rounds and their consistency. Additional raters are welcome later but not required for Phase 0.
 - [ ] Add score provenance, rationale and confidence; retain null for unknowns.
 - [x] Establish automated data validation, embedded snapshot consistency checks, JavaScript checks and browser regression tests.
 
-**Exit criteria:** Stable data model, tested core interactions, initial taxonomy and scoring methodology accepted by the owner. No promotion solely on build count.
+**Exit criteria:** Stable data model, tested core interactions and an initial taxonomy accepted by the owner. Scoring methodology accepted on evidence: documented anchors for all three indices and a calibration set scored twice, with its repeat-rating consistency reported. No promotion solely on build count.
 
 ## Phase 1 — Alpha: Global Music Atlas
 
-- [ ] Target 1,000–2,000 valid classifications.
+- [ ] Target 1,000–2,000 valid classifications. Report progress primarily as the number of records with evidenced scores (provenance, rationale, confidence); classification count is secondary.
 - [ ] Multiple parent relationships and aliases with stable IDs.
 - [ ] Ten-dimensional Music DNA: rhythm, tempo, instrumentation, timbre, melody, harmony, structure, vocal/lyrics, emotion, production.
-- [ ] Genre distributions and ranges in EI/FI/PI space, rather than fixed points alone.
+- [ ] Reference track layer: start with the calibration-set genres at 3–5 reference tracks each, then expand to other core genres as listening time allows. Each track has EI/FI/PI ratings and their provenance. Track ratings are listener judgments unless a measurement method is documented.
+- [ ] Genre distributions and ranges in EI/FI/PI space, derived from reference track ratings with a documented aggregation method, rather than fixed points alone. Genres without enough reference tracks keep their point estimate, labeled as such.
 - [ ] Overlap and documented evolutionary relationships.
 - [ ] Full three-dimensional coordinate exploration.
 
-**Exit criteria:** Core genres have traceable definitions, coordinates, DNA and classification relationships.
+**Exit criteria:** Core genres have traceable definitions, reference tracks, track-derived coordinates and ranges, DNA and classification relationships.
 
 ## Phase 2 — Beta: Music Discovery Engine
 
@@ -52,7 +55,7 @@ Use a stage-driven rather than date-driven roadmap. Advance only after the owner
 
 ## Phase 3 — Release Candidate: Music Analytics
 
-- [ ] Track-level database and scoring.
+- [ ] Expand the track-level database and scoring beyond the Phase 1 reference tracks.
 - [ ] Artist and record-label analysis.
 - [ ] Compilation point-cloud analysis (e.g., Hotel Costes).
 - [ ] Playlist spectrum analysis and cross-collection comparison.
@@ -102,10 +105,10 @@ Long-term research, not a fixed release deadline.
 | build.4 | Agent development governance |
 | build.5 | Development roadmap |
 | build.6 | Music taxonomy normalization |
-| build.7 | EI/FI/PI scoring standards |
+| build.7 | EI/FI/PI scoring standards, reference anchors and calibration set |
 | build.8 | Music DNA data specification |
 | build.9 | Data validation and automated checks |
-| build.10 | Genre distribution space |
+| build.10 | Reference tracks and track-derived genre distribution space |
 
 These are tentative milestone labels, not assertions that corresponding Git tags exist. The order may change with dependencies and validation needs. Pre-Alpha need not end at build.10. Tags and release-stage changes require explicit owner authorization per AGENTS.md.
 
@@ -114,6 +117,7 @@ These are tentative milestone labels, not assertions that corresponding Git tags
 - **Universality:** Cover human musical cultures beyond electronic music.
 - **Neutrality:** EI, FI and PI are independent; none measures musical quality.
 - **Traceability:** Classifications and scores must have documented evidence or be explicitly provisional.
+- **Evidence before scale:** Validate the scoring method on a small calibrated set before expanding coverage. Progress is measured by evidenced scores, not record counts.
 - **Extensibility:** Accommodate new genres, attributes and combinations, overlapping categories and multiple parent relationships.
 - **Simplicity:** Keep the architecture lightweight, offline-capable and low-maintenance; follow AGENTS.md.
 - **Human-directed, agent-developed:** The owner defines requirements, constraints and acceptance criteria; agents choose implementation within those boundaries.
